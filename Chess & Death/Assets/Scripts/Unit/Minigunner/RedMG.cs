@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedMG : MonoBehaviour
+public class RedMG : BaseRedMG
 {
     // Start is called before the first frame update
     void Start()

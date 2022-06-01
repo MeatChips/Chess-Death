@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedAV : MonoBehaviour
+public class RedAV : BaseRedAV
 {
     // Start is called before the first frame update
     void Start()
