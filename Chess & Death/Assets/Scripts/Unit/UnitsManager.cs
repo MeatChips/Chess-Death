@@ -17,7 +17,7 @@ public class UnitsManager : MonoBehaviour
     }
 
     // Volgende keer voor elke verschillende troep een function schrijven zoals deze hieronder. Omdat ik het anders niet weet.
-    public void SpawnBlueGeneral()
+    public void SpawnBlue()
     {
         var blueGeneralCount = 1;
 
@@ -33,7 +33,7 @@ public class UnitsManager : MonoBehaviour
         GameManager.Instance.UpdateGameStates(GameState.SpawnRed);
     }
 
-    public void SpawnRedGeneral()
+    public void SpawnRed()
     {
         var redGeneralCount = 1;
 
