@@ -30,10 +30,10 @@ public class GameManager : MonoBehaviour
                 GridManager.Instance.GenerateGrid();
                 break;
             case GameState.SpawnBlue:
-                UnitsManager.Instance.SpawnBlue();
+                UnitsManager.Instance.SpawnBlueGeneral();
                 break;
             case GameState.SpawnRed:
-                UnitsManager.Instance.SpawnRed();
+                UnitsManager.Instance.SpawnRedGeneral();
                 break;
             case GameState.RedTurn:
                 break;

@@ -9,6 +9,7 @@ public class CameraMovement : MonoBehaviour
     public Rigidbody2D rb2d;
     private Vector2 moveInput;
 
+    // DRAG MOVEMENT VARIABLES
     private Vector3 Origin;
     private Vector3 Difference;
     private Vector3 ResetCamera;
@@ -33,6 +34,7 @@ public class CameraMovement : MonoBehaviour
         rb2d.velocity = moveInput * cameraMoveSpeed;
     }
 
+    // MIDDLE MOUSE BUTTOM DRAG MOVEMENT
     private void LateUpdate()
     {
         if (Input.GetMouseButton(2))
@@ -54,6 +56,7 @@ public class CameraMovement : MonoBehaviour
             Camera.main.transform.position = Origin - Difference;
         }
 
+        // RESET CAMERA TO START POSITION
         if (Input.GetKeyDown(KeyCode.R))
         {
             Camera.main.transform.position = ResetCamera;
