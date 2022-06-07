@@ -207,3 +207,5 @@ MonoBehaviour:
   offsetColor: {r: 1, g: 0.84961855, b: 0.5424528, a: 1}
   sr: {fileID: 495828041949475895}
   highlight: {fileID: 7018920556057380138}
+  isWalkable: 1
+  OccupiedUnit: {fileID: 0}

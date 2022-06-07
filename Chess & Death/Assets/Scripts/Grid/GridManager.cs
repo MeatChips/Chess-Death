@@ -1,6 +1,9 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GridManager : MonoBehaviour
 {
@@ -39,7 +42,19 @@ public class GridManager : MonoBehaviour
 
         cam.transform.position = new Vector3((float)width / 2 - 0.5f, (float)height / 2 - 0.5f, -10);
 
-        GameManager.Instance.UpdateGameStates(GameState.SpawnRed);
+        GameManager.Instance.UpdateGameStates(GameState.SpawnBlue);
+    }
+
+    // Blue 1
+    public Tile GetBlueGeneralSpawnTile()
+    {
+        return tiles.Where(t => t.Key.x < width / 2 && t.Value.walkable).OrderBy(t => Random.value).First().Value;
+    }
+    
+    // Red 1
+    public Tile GetRedGeneralSpawnTile()
+    {
+        return tiles.Where(t => t.Key.x > width / 2 && t.Value.walkable).OrderBy(t => Random.value).First().Value;
     }
 
     public Tile GetTileAtPosition(Vector2 pos)

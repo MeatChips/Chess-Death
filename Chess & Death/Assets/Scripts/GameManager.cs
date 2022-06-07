@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -28,9 +29,11 @@ public class GameManager : MonoBehaviour
             case GameState.GenerateGrid:
                 GridManager.Instance.GenerateGrid();
                 break;
-            case GameState.SpawnRed:
-                break;
             case GameState.SpawnBlue:
+                UnitsManager.Instance.SpawnBlueGeneral();
+                break;
+            case GameState.SpawnRed:
+                UnitsManager.Instance.SpawnRedGeneral();
                 break;
             case GameState.RedTurn:
                 break;
@@ -44,8 +47,8 @@ public class GameManager : MonoBehaviour
 
 public enum GameState{
     GenerateGrid = 0,
-    SpawnRed = 1,
-    SpawnBlue = 2,
+    SpawnBlue = 1,
+    SpawnRed = 2,
     RedTurn = 3,
     BlueTurn = 4
 }
