@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: BlueGrenadeThrower
   m_EditorClassIdentifier: 
-  TeamUnits: 14
+  Team: 1
+  UnitType: 6
   UnitPrefab: {fileID: 3510218549637573968, guid: b35ca8b6602bb4b4b80cce35222cd505,
     type: 3}

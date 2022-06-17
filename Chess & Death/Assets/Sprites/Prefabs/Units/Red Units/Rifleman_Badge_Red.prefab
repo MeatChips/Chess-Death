@@ -94,4 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f033c4bf68f3e4284636b123d799a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Red Rifleman
   OccupiedTile: {fileID: 0}
+  Teams: 0
+  UnitType: 1

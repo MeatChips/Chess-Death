@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: BlueScout
   m_EditorClassIdentifier: 
-  TeamUnits: 13
+  Team: 1
+  UnitType: 5
   UnitPrefab: {fileID: 8239629749588349936, guid: c84dd0221a6ea8b4ba4881afc83b50c2,
     type: 3}

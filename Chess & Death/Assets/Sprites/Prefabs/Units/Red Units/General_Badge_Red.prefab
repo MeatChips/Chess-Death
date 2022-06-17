@@ -94,4 +94,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e328cb81d5bad024486d4cfec8fca078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Red General
   OccupiedTile: {fileID: 0}
+  TeamUnits: 0

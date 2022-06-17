@@ -94,4 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1abf4ea2e17f9e4b81f8dbd64956c5d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Red Minigunner
   OccupiedTile: {fileID: 0}
+  Teams: 0
+  UnitType: 2

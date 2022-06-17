@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: BlueSniper
   m_EditorClassIdentifier: 
-  TeamUnits: 11
+  Team: 1
+  UnitType: 3
   UnitPrefab: {fileID: 7671406719056423151, guid: 317af8c8bf3b2c5448e282d156bbcb87,
     type: 3}

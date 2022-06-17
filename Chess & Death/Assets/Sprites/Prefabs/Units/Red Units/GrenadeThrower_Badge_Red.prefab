@@ -94,4 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 271167e0b4b029641903c27bf45a9838, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Red Grenade Thrower
   OccupiedTile: {fileID: 0}
+  Teams: 0
+  UnitType: 6

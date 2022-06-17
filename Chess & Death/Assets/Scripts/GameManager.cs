@@ -29,15 +29,12 @@ public class GameManager : MonoBehaviour
             case GameState.GenerateGrid:
                 GridManager.Instance.GenerateGrid();
                 break;
-            case GameState.SpawnBlue:
-                UnitsManager.Instance.SpawnBlueGeneral();
-                break;
-            case GameState.SpawnRed:
-                UnitsManager.Instance.SpawnRedGeneral();
-                break;
-            case GameState.RedTurn:
+            case GameState.SpawnBothTeams:
+                UnitsManager.Instance.SpawnUnits();
                 break;
             case GameState.BlueTurn:
+                break;
+            case GameState.RedTurn:
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -47,8 +44,7 @@ public class GameManager : MonoBehaviour
 
 public enum GameState{
     GenerateGrid = 0,
-    SpawnBlue = 1,
-    SpawnRed = 2,
-    RedTurn = 3,
-    BlueTurn = 4
+    SpawnBothTeams = 1,
+    BlueTurn = 2,
+    RedTurn = 3
 }

@@ -94,4 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a82cb4741cb5649987741768b293ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UnitName: Red Armored Vehicle
   OccupiedTile: {fileID: 0}
+  Teams: 0
+  UnitType: 7

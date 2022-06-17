@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: BlueShotgunner
   m_EditorClassIdentifier: 
-  TeamUnits: 12
+  Team: 1
+  UnitType: 4
   UnitPrefab: {fileID: 4491512980999900094, guid: 26233bdb485f23146920fbfb7d5c3e1a,
     type: 3}
