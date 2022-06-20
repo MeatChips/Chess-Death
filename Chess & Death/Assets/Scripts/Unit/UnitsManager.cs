@@ -37,7 +37,7 @@ public class UnitsManager : MonoBehaviour
         Spawn(Team.Red, UnitType.Minigunner, 1);
         Spawn(Team.Red, UnitType.Sniper, 1);
         Spawn(Team.Red, UnitType.Shotgunner, 1);
-        Spawn(Team.Red, UnitType.Scout, 5);
+        Spawn(Team.Red, UnitType.Scout, 1);
         Spawn(Team.Red, UnitType.GrenadeThrower, 1);
         Spawn(Team.Red, UnitType.ArmoredVehicle, 1);
 

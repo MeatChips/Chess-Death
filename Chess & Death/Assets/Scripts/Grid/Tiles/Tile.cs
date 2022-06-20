@@ -55,6 +55,7 @@ public class Tile : MonoBehaviour
                         var enemy = (BaseRedG)OccupiedUnit;
                         Destroy(enemy.gameObject);
                         UnitsManager.Instance.SetSelectedBlueGeneral(null);
+                        GameManager.Instance.UpdateGameStates(GameState.RedTurn);
                     }
                 }
             }
@@ -64,6 +65,7 @@ public class Tile : MonoBehaviour
                 {
                     SetUnit(UnitsManager.Instance.SelectedBlueGeneral);
                     UnitsManager.Instance.SetSelectedBlueGeneral(null);
+                    GameManager.Instance.UpdateGameStates(GameState.RedTurn);
                 }
             }
             GameManager.Instance.UpdateGameStates(GameState.RedTurn);
@@ -81,6 +83,7 @@ public class Tile : MonoBehaviour
                         var enemy = (BaseBlueG)OccupiedUnit;
                         Destroy(enemy.gameObject);
                         UnitsManager.Instance.SetSelectedRedGeneral(null);
+                        GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
                     }
                 }
             }
@@ -90,6 +93,7 @@ public class Tile : MonoBehaviour
                 {
                     SetUnit(UnitsManager.Instance.SelectedRedGeneral);
                     UnitsManager.Instance.SetSelectedRedGeneral(null);
+                    GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
                 }
             }
             GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
