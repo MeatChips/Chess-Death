@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
         UpdateGameStates(GameState.GenerateGrid);
     }
 
+    // The gamestates of the game, what is happening in the game
     public void UpdateGameStates(GameState newState)
     {
         GameState = newState;

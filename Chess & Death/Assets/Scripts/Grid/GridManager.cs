@@ -23,6 +23,7 @@ public class GridManager : MonoBehaviour
         Instance = this;
     }
 
+    // Generating the grid
     public void GenerateGrid()
     {
         tiles = new Dictionary<Vector2, Tile>(); 
@@ -45,13 +46,14 @@ public class GridManager : MonoBehaviour
         GameManager.Instance.UpdateGameStates(GameState.SpawnBothTeams);
     }
 
+    // Spawning the units on a random tile
     public Tile GetRandomTile(Team team)
     {
         if (team == Team.Blue)
-            return tiles.Where(t => t.Key.x < width / 2 && t.Value.walkable).OrderBy(t => Random.value).First().Value;
+            return tiles.Where(t => t.Key.x < width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
             // Blue Side
         else
-            return tiles.Where(t => t.Key.x > width / 2 && t.Value.walkable).OrderBy(t => Random.value).First().Value;
+            return tiles.Where(t => t.Key.x > width / 2 && t.Value.Walkable).OrderBy(t => Random.value).First().Value;
             // Red Side
     }
 

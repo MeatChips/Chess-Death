@@ -19,6 +19,7 @@ public class UnitsManager : MonoBehaviour
         _units = Resources.LoadAll<ScriptableUnit>("Units").ToList();
     }
 
+    // Spawning the units
     public void SpawnUnits()
     {
         // The last number is used for how many units
@@ -27,7 +28,7 @@ public class UnitsManager : MonoBehaviour
         Spawn(Team.Blue, UnitType.Minigunner, 1);
         Spawn(Team.Blue, UnitType.Sniper, 1);
         Spawn(Team.Blue, UnitType.Shotgunner, 1);
-        Spawn(Team.Blue, UnitType.Scout, 1);
+        Spawn(Team.Blue, UnitType.Scout, 5);
         Spawn(Team.Blue, UnitType.GrenadeThrower, 1);
         Spawn(Team.Blue, UnitType.ArmoredVehicle, 1);
 
@@ -36,15 +37,17 @@ public class UnitsManager : MonoBehaviour
         Spawn(Team.Red, UnitType.Minigunner, 1);
         Spawn(Team.Red, UnitType.Sniper, 1);
         Spawn(Team.Red, UnitType.Shotgunner, 1);
-        Spawn(Team.Red, UnitType.Scout, 1);
+        Spawn(Team.Red, UnitType.Scout, 5);
         Spawn(Team.Red, UnitType.GrenadeThrower, 1);
         Spawn(Team.Red, UnitType.ArmoredVehicle, 1);
+
+        GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
     }
 
-    private void Spawn(Team team, UnitType unitType, int qty)
+    private void Spawn(Team team, UnitType unitType, int number)
     {
         var prefab = GetUnit<BaseUnit>(team, unitType);
-        for (int i = 0; i < qty; i++)
+        for (int i = 0; i < number; i++)
         {
             var instance = Instantiate(prefab);
             var tile = GridManager.Instance.GetRandomTile(team);
@@ -61,12 +64,12 @@ public class UnitsManager : MonoBehaviour
     public void SetSelectedBlueGeneral(BaseBlueG blueGeneral)
     {
         SelectedBlueGeneral = blueGeneral;
-        MenuManager.instance.ShowSelectedBlueGeneral(blueGeneral);
+        MenuManager.instance.ShowSelectedBlueGeneral(blueGeneral); 
     }
 
     public void SetSelectedRedGeneral(BaseRedG redGeneral)
     {
         SelectedRedGeneral = redGeneral;
-        MenuManager.instance.ShowSelectedRedGeneral(redGeneral);
+        MenuManager.instance.ShowSelectedRedGeneral(redGeneral); 
     }
 }

@@ -27,4 +27,5 @@ public enum UnitType
     Scout,
     GrenadeThrower,
     ArmoredVehicle
+
 }

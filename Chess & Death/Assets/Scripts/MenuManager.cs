@@ -16,6 +16,7 @@ public class MenuManager : MonoBehaviour
         instance = this;
     }
 
+    // Show the info of the tiles. What kind of tile it is and if there is unit on it
     public void ShowTileInfo(Tile tile)
     {
         if (tile == null)
@@ -35,6 +36,7 @@ public class MenuManager : MonoBehaviour
         }
     }
 
+    // Show what unit you have selected (Still needs to be updated, everything into 1 or 2 functions)
     public void ShowSelectedBlueGeneral(BaseBlueG blueGeneral)
     {
         if (blueGeneral == null)
@@ -43,6 +45,7 @@ public class MenuManager : MonoBehaviour
             return;
         }
 
+        Debug.Log(blueGeneral.UnitName);
         _SelectedUnitObject.GetComponentInChildren<Text>().text = blueGeneral.UnitName;
         _SelectedUnitObject.SetActive(true);
     }
@@ -55,6 +58,7 @@ public class MenuManager : MonoBehaviour
             return;
         }
 
+        Debug.Log(redGeneral.UnitName);
         _SelectedUnitObject.GetComponentInChildren<Text>().text = redGeneral.UnitName;
         _SelectedUnitObject.SetActive(true);
     }
