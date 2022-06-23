@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,8 +10,7 @@ public class UnitsManager : MonoBehaviour
 
     private List<ScriptableUnit> _units;
 
-    public BaseBlueG SelectedBlueGeneral;
-    public BaseRedG SelectedRedGeneral;
+    public BaseUnit SelectedUnit;
 
     void Awake()
     {
@@ -28,7 +28,7 @@ public class UnitsManager : MonoBehaviour
         Spawn(Team.Blue, UnitType.Minigunner, 1);
         Spawn(Team.Blue, UnitType.Sniper, 1);
         Spawn(Team.Blue, UnitType.Shotgunner, 1);
-        Spawn(Team.Blue, UnitType.Scout, 5);
+        Spawn(Team.Blue, UnitType.Scout, 1);
         Spawn(Team.Blue, UnitType.GrenadeThrower, 1);
         Spawn(Team.Blue, UnitType.ArmoredVehicle, 1);
 
@@ -61,15 +61,9 @@ public class UnitsManager : MonoBehaviour
         return (T)unit;
     }
 
-    public void SetSelectedBlueGeneral(BaseBlueG blueGeneral)
+    public void SetSelectedUnit(BaseUnit unit)
     {
-        SelectedBlueGeneral = blueGeneral;
-        MenuManager.instance.ShowSelectedBlueGeneral(blueGeneral); 
-    }
-
-    public void SetSelectedRedGeneral(BaseRedG redGeneral)
-    {
-        SelectedRedGeneral = redGeneral;
-        MenuManager.instance.ShowSelectedRedGeneral(redGeneral); 
+        SelectedUnit = unit;
+        MenuManager.Instance.ShowSelectedUnit(unit);
     }
 }

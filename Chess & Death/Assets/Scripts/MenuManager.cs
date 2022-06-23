@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
-    public static MenuManager instance;
+    public static MenuManager Instance;
 
     [SerializeField] private GameObject _SelectedUnitObject;
     [SerializeField] private GameObject _TileInfoObject;
@@ -13,7 +13,7 @@ public class MenuManager : MonoBehaviour
 
     void Awake()
     {
-        instance = this;
+        Instance = this;
     }
 
     // Show the info of the tiles. What kind of tile it is and if there is unit on it
@@ -37,29 +37,17 @@ public class MenuManager : MonoBehaviour
     }
 
     // Show what unit you have selected (Still needs to be updated, everything into 1 or 2 functions)
-    public void ShowSelectedBlueGeneral(BaseBlueG blueGeneral)
+
+    public void ShowSelectedUnit (BaseUnit unit)
     {
-        if (blueGeneral == null)
+        if (unit == null)
         {
             _SelectedUnitObject.SetActive(false);
             return;
         }
 
-        Debug.Log(blueGeneral.UnitName);
-        _SelectedUnitObject.GetComponentInChildren<Text>().text = blueGeneral.UnitName;
-        _SelectedUnitObject.SetActive(true);
-    }
-
-    public void ShowSelectedRedGeneral(BaseRedG redGeneral)
-    {
-        if (redGeneral == null)
-        {
-            _SelectedUnitObject.SetActive(false);
-            return;
-        }
-
-        Debug.Log(redGeneral.UnitName);
-        _SelectedUnitObject.GetComponentInChildren<Text>().text = redGeneral.UnitName;
+        Debug.Log(unit.UnitName);
+        _SelectedUnitObject.GetComponentInChildren<Text>().text = unit.UnitName;
         _SelectedUnitObject.SetActive(true);
     }
 }

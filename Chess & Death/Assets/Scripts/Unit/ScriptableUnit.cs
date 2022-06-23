@@ -11,12 +11,14 @@ public class ScriptableUnit : ScriptableObject
     public BaseUnit UnitPrefab;
 }
 
+// All teams
 public enum Team
 {
     Red = 0,
     Blue = 1
 }
 
+// All unit types
 public enum UnitType
 {
     General,
@@ -27,5 +29,4 @@ public enum UnitType
     Scout,
     GrenadeThrower,
     ArmoredVehicle
-
 }

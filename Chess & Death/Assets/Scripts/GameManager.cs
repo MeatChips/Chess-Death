@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class GameManager : MonoBehaviour
 {
@@ -37,6 +36,8 @@ public class GameManager : MonoBehaviour
                 break;
             case GameState.RedTurn:
                 break;
+            case GameState.GameFinished:
+                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
         }
@@ -47,5 +48,6 @@ public enum GameState{
     GenerateGrid = 0,
     SpawnBothTeams = 1,
     BlueTurn = 2,
-    RedTurn = 3
+    RedTurn = 3,
+    GameFinished = 4
 }
