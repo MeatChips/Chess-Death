@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedRM : BaseRedRM
+public class RedRM : BaseRM
 {
     // Start is called before the first frame update
     void Start()

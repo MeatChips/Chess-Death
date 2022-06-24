@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedGT : BaseRedGT
+public class RedGT : BaseGT
 {
     // Start is called before the first frame update
     void Start()

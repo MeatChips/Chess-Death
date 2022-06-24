@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: RedScout
   m_EditorClassIdentifier: 
-  Teams: 0
+  Team: 0
   UnitType: 5
   UnitPrefab: {fileID: 1309553028639944130, guid: ec94f874111726f4aa7a169780991dca,
     type: 3}

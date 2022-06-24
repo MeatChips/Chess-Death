@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: RedGeneral
   m_EditorClassIdentifier: 
-  TeamUnits: 0
+  Team: 0
+  UnitType: 0
   UnitPrefab: {fileID: 4484905367987229607, guid: 937768ea8ff126e4bb9c09f1d5f7f5ef,
     type: 3}

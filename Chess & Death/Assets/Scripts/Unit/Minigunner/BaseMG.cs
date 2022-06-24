@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BaseRedSG : BaseUnit
+public class BaseMG : BaseUnit
 {
     // Start is called before the first frame update
     void Start()

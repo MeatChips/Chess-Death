@@ -15,6 +15,9 @@ public class Tile : MonoBehaviour
     [SerializeField] private GameObject highlight;
     [SerializeField] private bool isWalkable;
 
+    Color BlueColor = Color.blue;
+    Color RedColor = Color.red;
+
     public BaseUnit OccupiedUnit;
     public bool Walkable => isWalkable && OccupiedUnit == null;
 
@@ -45,17 +48,17 @@ public class Tile : MonoBehaviour
         //if (GameManager.Instance.GameState != GameState.BlueTurn) return;
         if (GameManager.Instance.GameState == GameState.BlueTurn)
         {
-            //BlueMovement();
-            BlueMove();
+            Camera.main.backgroundColor = BlueColor;
+            BlueMovement();
         }
         else if (GameManager.Instance.GameState == GameState.RedTurn)
         {
-            //RedMovement();
-            RedMove();
+            Camera.main.backgroundColor = RedColor;
+            RedMovement();
         }
     }
 
-    public void BlueMove()
+    public void BlueMovement()
     {
         if (GameManager.Instance.GameState == GameState.BlueTurn)
         {
@@ -85,7 +88,7 @@ public class Tile : MonoBehaviour
         }
     }
 
-    public void RedMove()
+    public void RedMovement()
     {
         if (GameManager.Instance.GameState == GameState.RedTurn)
         {

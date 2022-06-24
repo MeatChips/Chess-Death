@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7c18bd06acf1654488f13814d0fe915, type: 3}
   m_Name: RedRifleman
   m_EditorClassIdentifier: 
-  Teams: 0
+  Team: 0
   UnitType: 1
   UnitPrefab: {fileID: 73141717374592464, guid: b540107880ebefa40978d9df5f6594d1,
     type: 3}

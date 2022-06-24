@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RedAV : BaseRedAV
+public class RedAV : BaseAV
 {
     // Start is called before the first frame update
     void Start()
