@@ -9,6 +9,10 @@ public class GameManager : MonoBehaviour
 
     public GameState GameState;
 
+    // Colors for background changes
+    Color BlueColor = Color.blue;
+    Color RedColor = Color.red;
+
     void Awake()
     {
         Instance = this;
@@ -33,8 +37,10 @@ public class GameManager : MonoBehaviour
                 UnitsManager.Instance.SpawnUnits();
                 break;
             case GameState.BlueTurn:
+                Camera.main.backgroundColor = BlueColor;
                 break;
             case GameState.RedTurn:
+                Camera.main.backgroundColor = RedColor;
                 break;
             case GameState.GameFinished:
                 break;
@@ -44,6 +50,7 @@ public class GameManager : MonoBehaviour
     }
 }
 
+// GameState enums
 public enum GameState{
     GenerateGrid = 0,
     SpawnBothTeams = 1,

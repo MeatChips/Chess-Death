@@ -11,9 +11,22 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _TileInfoObject;
     [SerializeField] private GameObject _TileUnitObject;
 
+    [Header("Buttons")]
+    public Button GameInfoButton;
+    public Button GameInfoExitButton;
+
     void Awake()
     {
         Instance = this;
+    }
+
+    void Start()
+    {
+        Button GameInfoBtn = GameInfoButton.GetComponent<Button>();
+        GameInfoBtn.onClick.AddListener(GamePause);
+
+        Button GameInfoExitBtn = GameInfoExitButton.GetComponent<Button>();
+        GameInfoExitBtn.onClick.AddListener(GameResume);
     }
 
     // Show the info of the tiles. What kind of tile it is and if there is unit on it
@@ -49,5 +62,15 @@ public class MenuManager : MonoBehaviour
         Debug.Log(unit.UnitName);
         _SelectedUnitObject.GetComponentInChildren<Text>().text = unit.UnitName;
         _SelectedUnitObject.SetActive(true);
+    }
+
+    public void GamePause()
+    {
+        Time.timeScale = 0f;
+    }
+
+    public void GameResume()
+    {
+        Time.timeScale = 1f;
     }
 }

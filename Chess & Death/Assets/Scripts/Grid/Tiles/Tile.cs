@@ -13,10 +13,8 @@ public class Tile : MonoBehaviour
     // SpriteRenderer - highlight of tile - checking if tile is walkable
     [SerializeField] private SpriteRenderer sr;
     [SerializeField] private GameObject highlight;
+    [SerializeField] private GameObject movementHighlight;
     [SerializeField] private bool isWalkable;
-
-    Color BlueColor = Color.blue;
-    Color RedColor = Color.red;
 
     public BaseUnit OccupiedUnit;
     public bool Walkable => isWalkable && OccupiedUnit == null;
@@ -41,81 +39,184 @@ public class Tile : MonoBehaviour
         MenuManager.Instance.ShowTileInfo(null);
     }
 
-
-    // Movement for units (Still needs to be updated, so you can only do one move every round and for every unit movement)
     void OnMouseDown()
     {
         //if (GameManager.Instance.GameState != GameState.BlueTurn) return;
         if (GameManager.Instance.GameState == GameState.BlueTurn)
         {
-            Camera.main.backgroundColor = BlueColor;
             BlueMovement();
+            ShowMovementRange();
         }
         else if (GameManager.Instance.GameState == GameState.RedTurn)
         {
-            Camera.main.backgroundColor = RedColor;
             RedMovement();
+            ShowMovementRange();
         }
     }
+
+    #region old BlueMovement code
+    //if (OccupiedUnit != null)
+    //{
+    //    if (OccupiedUnit.Teams == Team.Blue) UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
+    //    else
+    //    {
+    //        if (UnitsManager.Instance.SelectedUnit != null)
+    //        {
+    //            var enemy = (BaseUnit)OccupiedUnit;
+    //            Destroy(enemy.gameObject);
+    //            SetUnitMove(UnitsManager.Instance.SelectedUnit);
+    //            HideMovementRange();
+    //            UnitsManager.Instance.SetSelectedUnit(null);
+    //            GameManager.Instance.UpdateGameStates(GameState.RedTurn);
+    //        }
+    //    }
+    //}
+    //else
+    //{
+    //    if (UnitsManager.Instance.SelectedUnit != null)
+    //    {
+    //        SetUnitMove(UnitsManager.Instance.SelectedUnit);
+    //        HideMovementRange();
+    //        UnitsManager.Instance.SetSelectedUnit(null);
+    //        GameManager.Instance.UpdateGameStates(GameState.RedTurn);
+    //    }
+    //}
+    #endregion
 
     public void BlueMovement()
     {
-        if (GameManager.Instance.GameState == GameState.BlueTurn)
+        // Clicked an empty tile without a unit selected.
+        // Do nothing.
+        if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit == null)
+            return;
+
+        // Clicked an occupied friendly tile.
+        // Select the unit.
+        else if (OccupiedUnit != null && OccupiedUnit.Teams == Team.Blue)
         {
-            if (OccupiedUnit != null)
-            {
-                if (OccupiedUnit.Teams == Team.Blue) UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
-                else
-                {
-                    if (UnitsManager.Instance.SelectedUnit != null)
-                    {
-                        var enemy = (BaseUnit)OccupiedUnit;
-                        Destroy(enemy.gameObject);
-                        UnitsManager.Instance.SetSelectedUnit(null);
-                        GameManager.Instance.UpdateGameStates(GameState.RedTurn);
-                    }
-                }
-            }
-            else
-            {
-                if (UnitsManager.Instance.SelectedUnit != null)
-                {
-                    SetUnit(UnitsManager.Instance.SelectedUnit);
-                    UnitsManager.Instance.SetSelectedUnit(null);
-                    GameManager.Instance.UpdateGameStates(GameState.RedTurn);
-                }
-            }
+            UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
+        }
+
+        // Clicked an empty tile with a unit selected.
+        // Move the unit to the new tile.
+        else if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit != null)
+        {
+            SetUnit(UnitsManager.Instance.SelectedUnit);
+            HideMovementRange();
+            UnitsManager.Instance.SetSelectedUnit(null);
+            GameManager.Instance.UpdateGameStates(GameState.RedTurn);
+        }
+
+        // Clicked an occupied enemy tile with a unit selected.
+        // Attack the enemy unit.
+        else if (UnitsManager.Instance.SelectedUnit != null && OccupiedUnit.Teams == Team.Red)
+        {
+            var enemy = (BaseUnit)OccupiedUnit;
+            Destroy(enemy.gameObject);
+            HideMovementRange();
+            SetUnit(UnitsManager.Instance.SelectedUnit);
+            UnitsManager.Instance.SetSelectedUnit(null);
+            GameManager.Instance.UpdateGameStates(GameState.RedTurn);
         }
     }
 
+    #region old RedMovement code
+    //if (OccupiedUnit != null)
+    //{
+    //    if (OccupiedUnit.Teams == Team.Red) UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
+    //    else
+    //    {
+    //        if (UnitsManager.Instance.SelectedUnit != null)
+    //        {
+    //            var enemy = (BaseUnit)OccupiedUnit;
+    //            Destroy(enemy.gameObject);
+    //            SetUnitMove(UnitsManager.Instance.SelectedUnit);
+    //            HideMovementRange();
+    //            UnitsManager.Instance.SetSelectedUnit(null);
+    //            GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
+    //        }
+    //    }
+    //}
+    //else
+    //{
+    //    if (UnitsManager.Instance.SelectedUnit != null)
+    //    {
+    //        SetUnitMove(UnitsManager.Instance.SelectedUnit);
+    //        HideMovementRange();
+    //        UnitsManager.Instance.SetSelectedUnit(null);
+    //        GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
+    //    }
+    //}
+    #endregion
+
     public void RedMovement()
     {
-        if (GameManager.Instance.GameState == GameState.RedTurn)
+        // Clicked an empty tile without a unit selected.
+        // Do nothing.
+        if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit == null)
+            return;
+
+        // Clicked an occupied friendly tile.
+        // Select the unit.
+        else if (OccupiedUnit != null && OccupiedUnit.Teams == Team.Red)
         {
-            if (OccupiedUnit != null)
-            {
-                if (OccupiedUnit.Teams == Team.Red) UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
-                else
-                {
-                    if (UnitsManager.Instance.SelectedUnit != null)
-                    {
-                        var enemy = (BaseUnit)OccupiedUnit;
-                        Destroy(enemy.gameObject);
-                        UnitsManager.Instance.SetSelectedUnit(null);
-                        GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
-                    }
-                }
-            }
-            else
-            {
-                if (UnitsManager.Instance.SelectedUnit != null)
-                {
-                    SetUnit(UnitsManager.Instance.SelectedUnit);
-                    UnitsManager.Instance.SetSelectedUnit(null);
-                    GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
-                }
-            }
+            UnitsManager.Instance.SetSelectedUnit((BaseUnit)OccupiedUnit);
         }
+
+        // Clicked an empty tile with a unit selected.
+        // Move the unit to the new tile.
+        else if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit != null)
+        {
+            SetUnit(UnitsManager.Instance.SelectedUnit);
+            HideMovementRange();
+            UnitsManager.Instance.SetSelectedUnit(null);
+            GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
+        }
+
+        // Clicked an occupied enemy tile with a unit selected.
+        // Attack the enemy unit.
+        else if (UnitsManager.Instance.SelectedUnit != null && OccupiedUnit.Teams == Team.Blue)
+        {
+            var enemy = (BaseUnit)OccupiedUnit;
+            Destroy(enemy.gameObject);
+            SetUnit(UnitsManager.Instance.SelectedUnit);
+            HideMovementRange();
+            UnitsManager.Instance.SetSelectedUnit(null);
+            GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
+        }
+    }
+
+    public void ShowMovementRange()
+    {
+        var unit = (BaseUnit)OccupiedUnit;
+        Vector3 myPosition = unit.transform.position;
+        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 2);
+
+        foreach (Tile tile in tilesInRange)
+        {
+            tile.movementHighlight.SetActive(true);
+        }
+    }
+
+    public void HideMovementRange()
+    {
+        var unit = (BaseUnit)OccupiedUnit;
+        Vector3 myPosition = unit.transform.position;
+        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 10000);
+
+        foreach (Tile tile in tilesInRange)
+        {
+            tile.movementHighlight.SetActive(false);
+        }
+    }
+
+    public void SetUnitMove(BaseUnit unit)
+    {
+        if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;
+        unit.transform.position = transform.position;
+        //List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(unit.transform.position, 5);
+        OccupiedUnit = unit;
+        unit.OccupiedTile = this;
     }
 
     public void SetUnit(BaseUnit unit)
@@ -125,53 +226,4 @@ public class Tile : MonoBehaviour
         OccupiedUnit = unit;
         unit.OccupiedTile = this;
     }
-
-
-    //if (IsEnemy()) // This is a private method to return a boolean check below
-    //{
-    //    switch (OccupiedUnit.UnitType)
-    //    {
-    //        // Here you'll switch through each unit type if you need to and choose what to do based on that
-    //        case UnitType.General:
-    //            // log for unit
-    //            break;
-    //        case UnitType.Rifleman:
-    //            // log for unit
-    //            break;
-    //        case UnitType.Minigunner:
-    //            // log for unit
-    //            break;
-    //        case UnitType.Sniper:
-    //            // log for unit
-    //            break;
-    //        case UnitType.Shotgunner:
-    //            // log for unit
-    //            break;
-    //        case UnitType.Scout:
-    //            // log for unit
-    //            break;
-    //        case UnitType.GrenadeThrower:
-    //            // log for unit
-    //            break;
-    //        case UnitType.ArmoredVehicle:
-    //            // log for unit
-    //            break;
-    //    }
-    //}
-    //else
-    //{
-    //    if (UnitsManager.Instance.SelectedBlueGeneral != null)
-    //    {
-    //        SetUnit(UnitsManager.Instance.SelectedBlueGeneral);
-    //        UnitsManager.Instance.SetSelectedBlueGeneral(null);
-    //        GameManager.Instance.UpdateGameStates(GameState.RedTurn);
-    //    }
-    //}
-    //
-    //// Little private methods like this condense your boolean checks down into more easily
-    //// digestible operations like you see above in the OnMouseDown method.
-    //bool IsEnemy(UnitType unitType)
-    //{
-    //    return (unitType != null && unitType. == Team.Red);
-    //}ss
 }
