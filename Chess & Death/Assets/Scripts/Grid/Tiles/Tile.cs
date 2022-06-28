@@ -4,26 +4,23 @@ using System.Linq;
 using UnityEditor;
 using UnityEngine;
 
-public class Tile : MonoBehaviour
+public abstract class Tile : MonoBehaviour
 {
-    // Colors for tiles
-    [SerializeField] private Color baseColor;
-    [SerializeField] private Color offsetColor;
-
     // SpriteRenderer - highlight of tile - checking if tile is walkable
-    [SerializeField] private SpriteRenderer sr;
+    [SerializeField] protected SpriteRenderer sr;
     [SerializeField] private GameObject highlight;
     [SerializeField] private GameObject movementHighlight;
+
     [SerializeField] private bool isWalkable;
+    public bool Walkable => isWalkable && OccupiedUnit == null;
 
     public BaseUnit OccupiedUnit;
-    public bool Walkable => isWalkable && OccupiedUnit == null;
 
     public string tileName;
 
-    public void Init(bool isOffset)
+    public virtual void Init(int x, int y)
     {
-        sr.color = isOffset ? offsetColor : baseColor;
+
     }
 
     // Highligting tile you are hovering over with your mouse - Show the info of that tile

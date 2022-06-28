@@ -12,7 +12,8 @@ public class GridManager : MonoBehaviour
     [SerializeField] private int width;
     [SerializeField] private int height;
 
-    [SerializeField] private Tile tilePrefab;
+    [SerializeField] private Tile sandTile;
+    [SerializeField] private Tile duneTile;
 
     [SerializeField] private Camera cam;
 
@@ -31,11 +32,11 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var spawnedTile = Instantiate(tilePrefab, new Vector3(x, y), Quaternion.identity);
+                var randomTile = Random.Range(0,18) == 8 ? duneTile : sandTile;
+                var spawnedTile = Instantiate(randomTile, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
-
-                var isOffset = x % 2 != y % 2;
-                spawnedTile.Init(isOffset);
+                
+                spawnedTile.Init(x,y);
 
                 tiles[new Vector2(x, y)] = spawnedTile;
             }

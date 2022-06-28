@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class SandTile : Tile
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private Color baseColor;
+    [SerializeField] private Color offsetColor;
 
-    // Update is called once per frame
-    void Update()
+    public override void Init(int x, int y)
     {
-        
+        var isOffset = x % 2 != y % 2;
+        sr.color = isOffset ? offsetColor : baseColor;
     }
 }
