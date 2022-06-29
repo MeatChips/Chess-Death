@@ -32,7 +32,7 @@ public class GridManager : MonoBehaviour
         {
             for (int y = 0; y < height; y++)
             {
-                var randomTile = Random.Range(0,18) == 8 ? duneTile : sandTile;
+                var randomTile = Random.Range(0,13) == 6 ? duneTile : sandTile;
                 var spawnedTile = Instantiate(randomTile, new Vector3(x, y), Quaternion.identity);
                 spawnedTile.name = $"Tile {x} {y}";
                 
@@ -58,16 +58,16 @@ public class GridManager : MonoBehaviour
         // Red Side
     }
 
-    // referencePosition = Position of tile unit is on
+    // unitPosition = Position of tile unit is on
     // range = the range of the units how far it can move
     // tilePosition = the position of the tiles
-    public List<Tile> GetTilesInRange(Vector2 referencePosition, int range)
+    public List<Tile> GetTilesInRange(Vector2 unitPosition, int range)
     {
         List<Tile> resultList = new List<Tile>();
 
         foreach (Vector2 tilePosition in tiles.Keys)
         {
-            if (Vector2.Distance(referencePosition, tilePosition) <= range)
+            if (Vector2.Distance(unitPosition, tilePosition) <= range)
             {
                 resultList.Add(tiles[tilePosition]);
             }
