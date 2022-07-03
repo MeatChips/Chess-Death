@@ -75,14 +75,4 @@ public class GridManager : MonoBehaviour
 
         return resultList;
     }
-
-    public Tile GetTileAtPosition(Vector2 pos)
-    {
-        if(tiles.TryGetValue(pos, out var tile))
-        {
-            return tile;
-        }
-
-        return null;
-    }
 }

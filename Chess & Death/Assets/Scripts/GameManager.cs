@@ -42,7 +42,11 @@ public class GameManager : MonoBehaviour
             case GameState.RedTurn:
                 Camera.main.backgroundColor = RedColor;
                 break;
-            case GameState.GameFinished:
+            case GameState.BlueWin:
+                MenuManager.Instance.TeamBlueWon();
+                break;
+            case GameState.RedWin:
+                MenuManager.Instance.TeamRedWon();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -56,5 +60,6 @@ public enum GameState{
     SpawnBothTeams = 1,
     BlueTurn = 2,
     RedTurn = 3,
-    GameFinished = 4
+    BlueWin = 4,
+    RedWin = 5
 }

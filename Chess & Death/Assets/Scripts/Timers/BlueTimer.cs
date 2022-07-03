@@ -35,7 +35,8 @@ public class BlueTimer : MonoBehaviour
     {
         if (timeToDisplay < 0)
         {
-            timeToDisplay = 0;
+            Debug.Log("BlueTimer is zero");
+            GameManager.Instance.UpdateGameStates(GameState.RedWin);
         }
 
         float minutes = Mathf.FloorToInt(timeToDisplay / 60);

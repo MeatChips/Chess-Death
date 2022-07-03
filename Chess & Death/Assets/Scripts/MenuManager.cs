@@ -10,6 +10,10 @@ public class MenuManager : MonoBehaviour
     [SerializeField] private GameObject _SelectedUnitObject;
     [SerializeField] private GameObject _TileInfoObject;
     [SerializeField] private GameObject _TileUnitObject;
+    [SerializeField] private GameObject _TeamRedWonObject;
+    [SerializeField] private GameObject _TeamBlueWonObject;
+    [SerializeField] private GameObject _GameInfoObject;
+    
 
     [Header("Buttons")]
     public Button GameInfoButton;
@@ -51,7 +55,7 @@ public class MenuManager : MonoBehaviour
 
     // Show what unit you have selected (Still needs to be updated, everything into 1 or 2 functions)
 
-    public void ShowSelectedUnit (BaseUnit unit)
+    public void ShowSelectedUnit(BaseUnit unit)
     {
         if (unit == null)
         {
@@ -71,6 +75,18 @@ public class MenuManager : MonoBehaviour
 
     public void GameResume()
     {
-        Time.timeScale = 1f;
+        Time.timeScale = 100f;
+    }
+
+    public void TeamRedWon()
+    {
+        _TeamRedWonObject.SetActive(true);
+        _GameInfoObject.SetActive(false);
+    }
+
+    public void TeamBlueWon()
+    {
+        _TeamBlueWonObject.SetActive(true);
+        _GameInfoObject.SetActive(false);
     }
 }
