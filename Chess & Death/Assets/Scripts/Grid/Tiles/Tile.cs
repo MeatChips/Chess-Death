@@ -139,6 +139,10 @@ public abstract class Tile : MonoBehaviour
                 var enemy = (BaseUnit)OccupiedUnit;
                 Destroy(enemy.gameObject);
                 SetUnit(UnitsManager.Instance.SelectedUnit);
+                if (enemy.UnitType == UnitType.General)
+                {
+                    GameManager.Instance.UpdateGameStates(GameState.BlueWin);
+                }
             }
             else
             {
@@ -230,8 +234,13 @@ public abstract class Tile : MonoBehaviour
             {
                 SetMovementRangeVisible(GetSelectedUnit(), false);
                 var enemy = (BaseUnit)OccupiedUnit;
-                Destroy(enemy.gameObject);
-                SetUnit(UnitsManager.Instance.SelectedUnit);
+                Destroy(enemy);
+                Debug.Log(enemy + "has been destroyed");
+                SetUnit(UnitsManager.Instance.SelectedUnit);;
+                if (enemy.UnitType == UnitType.General)
+                {
+                    GameManager.Instance.UpdateGameStates(GameState.RedWin);
+                }
             }
             else
             {

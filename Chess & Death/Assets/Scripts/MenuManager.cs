@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MenuManager : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class MenuManager : MonoBehaviour
     [Header("Buttons")]
     public Button GameInfoButton;
     public Button GameInfoExitButton;
+
+    public Button RedRestartButton;
+    public Button BlueRestartButton;
 
     void Awake()
     {
@@ -68,6 +72,7 @@ public class MenuManager : MonoBehaviour
         _SelectedUnitObject.SetActive(true);
     }
 
+    // Pause - Resume
     public void GamePause()
     {
         Time.timeScale = 0f;
@@ -75,9 +80,10 @@ public class MenuManager : MonoBehaviour
 
     public void GameResume()
     {
-        Time.timeScale = 100f;
+        Time.timeScale = 1f;
     }
 
+    // Which team won panels
     public void TeamRedWon()
     {
         _TeamRedWonObject.SetActive(true);
@@ -88,5 +94,11 @@ public class MenuManager : MonoBehaviour
     {
         _TeamBlueWonObject.SetActive(true);
         _GameInfoObject.SetActive(false);
+    }
+
+    // Restart game
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
