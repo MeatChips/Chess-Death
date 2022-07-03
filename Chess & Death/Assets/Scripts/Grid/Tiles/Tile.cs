@@ -89,7 +89,9 @@ public abstract class Tile : MonoBehaviour
     // Movement for the blue units
     public void BlueMovement()
     {
-        // Click on a empty tile without a selected unit, do nothing
+        // Unit
+        BaseUnit unit = GetSelectedUnit();
+
         if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit == null)
             return;
 
@@ -104,11 +106,22 @@ public abstract class Tile : MonoBehaviour
             SetMovementRangeVisible(GetSelectedUnit(), true);
         }
 
-        // Click on a empty tile, move your selected unit to that tile
+        // Click on a empty tile, move your selected unit to that tile. Only able to do so inside of the movement range of the unit
         else if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit != null)
         {
-            SetMovementRangeVisible(GetSelectedUnit(), false);
-            SetUnit(UnitsManager.Instance.SelectedUnit);
+            // Grab the position of the current selected unit
+            Vector2 unitPosition = new Vector2(unit.transform.position.x, unit.transform.position.y);
+
+            // Check for valid location
+            if (GridManager.Instance.GetTilesInRange(unitPosition, unit.MovementRange).Contains(this))
+            {
+                SetMovementRangeVisible(GetSelectedUnit(), false);
+                SetUnit(unit);
+            }
+            else
+            {
+                return;
+            }
             UnitsManager.Instance.SetSelectedUnit(null);
             GameManager.Instance.UpdateGameStates(GameState.RedTurn);
         }
@@ -116,13 +129,25 @@ public abstract class Tile : MonoBehaviour
         // Click a tile with a enemy unit on it, destroy the enemy
         else if (UnitsManager.Instance.SelectedUnit != null && OccupiedUnit.Teams == Team.Red)
         {
-            SetMovementRangeVisible(GetSelectedUnit(), false);
-            var enemy = (BaseUnit)OccupiedUnit;
-            Destroy(enemy.gameObject);
-            SetUnit(UnitsManager.Instance.SelectedUnit);
+            // Grab the position of the current selected unit
+            Vector2 unitPosition = new Vector2(unit.transform.position.x, unit.transform.position.y);
+
+            // Check for valid location
+            if (GridManager.Instance.GetTilesInRange(unitPosition, unit.MovementRange).Contains(this))
+            {
+                SetMovementRangeVisible(GetSelectedUnit(), false);
+                var enemy = (BaseUnit)OccupiedUnit;
+                Destroy(enemy.gameObject);
+                SetUnit(UnitsManager.Instance.SelectedUnit);
+            }
+            else
+            {
+                return;
+            }
             UnitsManager.Instance.SetSelectedUnit(null);
             GameManager.Instance.UpdateGameStates(GameState.RedTurn);
         }
+
     }
 
     #region old RedMovement code
@@ -157,7 +182,9 @@ public abstract class Tile : MonoBehaviour
     // Movement for the blue units
     public void RedMovement()
     {
-        // Click on a empty tile without a selected unit, do nothing
+        // Unit
+        BaseUnit unit = GetSelectedUnit();
+
         if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit == null)
             return;
 
@@ -172,11 +199,22 @@ public abstract class Tile : MonoBehaviour
             SetMovementRangeVisible(GetSelectedUnit(), true);
         }
 
-        // Click on a empty tile, move your selected unit to that tile
+        // Click on a empty tile, move your selected unit to that tile. Only able to do so inside of the movement range of the unit
         else if (OccupiedUnit == null && UnitsManager.Instance.SelectedUnit != null)
         {
-            SetMovementRangeVisible(GetSelectedUnit(), false);
-            SetUnit(UnitsManager.Instance.SelectedUnit);
+            // Grab the position of the current selected unit
+            Vector2 unitPosition = new Vector2(unit.transform.position.x, unit.transform.position.y);
+
+            // Check for valid location
+            if (GridManager.Instance.GetTilesInRange(unitPosition, unit.MovementRange).Contains(this))
+            {
+                SetMovementRangeVisible(GetSelectedUnit(), false);
+                SetUnit(unit);
+            }
+            else
+            {
+                return;
+            }
             UnitsManager.Instance.SetSelectedUnit(null);
             GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
         }
@@ -184,10 +222,21 @@ public abstract class Tile : MonoBehaviour
         // Click a tile with a enemy unit on it, destroy the enemy
         else if (UnitsManager.Instance.SelectedUnit != null && OccupiedUnit.Teams == Team.Blue)
         {
-            SetMovementRangeVisible(GetSelectedUnit(), false);
-            var enemy = (BaseUnit)OccupiedUnit;
-            Destroy(enemy.gameObject);
-            SetUnit(UnitsManager.Instance.SelectedUnit);
+            // Grab the position of the current selected unit
+            Vector2 unitPosition = new Vector2(unit.transform.position.x, unit.transform.position.y);
+
+            // Check for valid location
+            if (GridManager.Instance.GetTilesInRange(unitPosition, unit.MovementRange).Contains(this))
+            {
+                SetMovementRangeVisible(GetSelectedUnit(), false);
+                var enemy = (BaseUnit)OccupiedUnit;
+                Destroy(enemy.gameObject);
+                SetUnit(UnitsManager.Instance.SelectedUnit);
+            }
+            else
+            {
+                return;
+            }
             UnitsManager.Instance.SetSelectedUnit(null);
             GameManager.Instance.UpdateGameStates(GameState.BlueTurn);
         }
