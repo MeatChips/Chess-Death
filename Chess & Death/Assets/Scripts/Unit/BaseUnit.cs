@@ -6,8 +6,8 @@ public class BaseUnit : MonoBehaviour
 {
     public string UnitName;
     public Tile OccupiedTile;
+    public int MovementRange;
 
     public Team Teams;
     public UnitType UnitType;
-
 }

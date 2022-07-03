@@ -96,5 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Blue Scout
   OccupiedTile: {fileID: 0}
+  MovementRange: 3
   Teams: 1
   UnitType: 5

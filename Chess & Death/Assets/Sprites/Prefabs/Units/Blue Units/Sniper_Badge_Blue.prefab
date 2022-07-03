@@ -96,5 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Blue Sniper
   OccupiedTile: {fileID: 0}
+  MovementRange: 4
   Teams: 1
   UnitType: 3

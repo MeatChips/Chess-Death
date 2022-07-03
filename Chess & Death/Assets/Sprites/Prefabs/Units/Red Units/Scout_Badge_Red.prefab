@@ -96,5 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Red Scout
   OccupiedTile: {fileID: 0}
+  MovementRange: 3
   Teams: 0
   UnitType: 5

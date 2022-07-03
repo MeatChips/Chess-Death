@@ -46,7 +46,6 @@ public abstract class Tile : MonoBehaviour
 
     void OnMouseDown()
     {
-        //if (GameManager.Instance.GameState != GameState.BlueTurn) return;
         if (GameManager.Instance.GameState == GameState.BlueTurn)
         {
             BlueMovement();
@@ -87,6 +86,7 @@ public abstract class Tile : MonoBehaviour
     //}
     #endregion
 
+    // Movement for the blue units
     public void BlueMovement()
     {
         // Click on a empty tile without a selected unit, do nothing
@@ -154,6 +154,7 @@ public abstract class Tile : MonoBehaviour
     //}
     #endregion
 
+    // Movement for the blue units
     public void RedMovement()
     {
         // Click on a empty tile without a selected unit, do nothing
@@ -196,7 +197,8 @@ public abstract class Tile : MonoBehaviour
     private void SetMovementRangeVisible(BaseUnit unit, bool state)
     {
         Vector3 currentPosition = unit.gameObject.transform.position;
-        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(currentPosition.x, currentPosition.y), 1);
+        int visibleRange = unit.MovementRange;
+        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(currentPosition.x, currentPosition.y), visibleRange);
         tilesInRange.ForEach((tile) => { tile.movementHighlight.SetActive(state); });
     }
 
@@ -213,31 +215,32 @@ public abstract class Tile : MonoBehaviour
     }
 
     #region old tile highlight code
-    public void ShowMovementRange()
-    {
-        var unit = (BaseUnit)OccupiedUnit;
-        Vector3 myPosition = unit.gameObject.transform.position;
-        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 1);
+    //public void ShowMovementRange()
+    //{
+    //    var unit = (BaseUnit)OccupiedUnit;
+    //    Vector3 myPosition = unit.gameObject.transform.position;
+    //    List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 1);
+    //
+    //    foreach (Tile tile in tilesInRange)
+    //    {
+    //        tile.movementHighlight.SetActive(true);
+    //    }
+    //}
 
-        foreach (Tile tile in tilesInRange)
-        {
-            tile.movementHighlight.SetActive(true);
-        }
-    }
-
-    public void HideMovementRange()
-    {
-        var unit = (BaseUnit)OccupiedUnit;
-        Vector3 myPosition = unit.gameObject.transform.position;
-        List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 10000);
-
-        foreach (Tile tile in tilesInRange)
-        {
-            tile.movementHighlight.SetActive(false);
-        }
-    }
+    //public void HideMovementRange()
+    //{
+    //    var unit = (BaseUnit)OccupiedUnit;
+    //    Vector3 myPosition = unit.gameObject.transform.position;
+    //    List<Tile> tilesInRange = GridManager.Instance.GetTilesInRange(new Vector2(myPosition.x, myPosition.y), 10000);
+    //
+    //    foreach (Tile tile in tilesInRange)
+    //    {
+    //        tile.movementHighlight.SetActive(false);
+    //    }
+    //}
     #endregion
 
+    // Set the unit on the correct position
     public void SetUnit(BaseUnit unit)
     {
         if (unit.OccupiedTile != null) unit.OccupiedTile.OccupiedUnit = null;

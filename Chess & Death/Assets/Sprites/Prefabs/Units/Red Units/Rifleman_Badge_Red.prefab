@@ -96,5 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Red Rifleman
   OccupiedTile: {fileID: 0}
+  MovementRange: 2
   Teams: 0
   UnitType: 1

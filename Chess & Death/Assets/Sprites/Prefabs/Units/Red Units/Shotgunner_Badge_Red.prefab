@@ -96,5 +96,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   UnitName: Red Shotgunner
   OccupiedTile: {fileID: 0}
+  MovementRange: 1
   Teams: 0
   UnitType: 4
