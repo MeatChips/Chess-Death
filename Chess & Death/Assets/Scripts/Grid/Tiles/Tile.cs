@@ -138,6 +138,7 @@ public abstract class Tile : MonoBehaviour
                 SetMovementRangeVisible(GetSelectedUnit(), false);
                 var enemy = (BaseUnit)OccupiedUnit;
                 Destroy(enemy.gameObject);
+                Debug.Log(enemy + "DESTROYED!!");
                 SetUnit(UnitsManager.Instance.SelectedUnit);
                 if (enemy.UnitType == UnitType.General)
                 {
@@ -234,8 +235,8 @@ public abstract class Tile : MonoBehaviour
             {
                 SetMovementRangeVisible(GetSelectedUnit(), false);
                 var enemy = (BaseUnit)OccupiedUnit;
-                Destroy(enemy);
-                Debug.Log(enemy + "has been destroyed");
+                Destroy(enemy.gameObject);
+                Debug.Log(enemy + "DESTROYED!!");
                 SetUnit(UnitsManager.Instance.SelectedUnit);;
                 if (enemy.UnitType == UnitType.General)
                 {
