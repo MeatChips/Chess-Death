@@ -5,10 +5,10 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    public void StartGame(string scene)
+    public void LoadScene(string scene)
     {
         SceneManager.LoadScene(scene);
-        Debug.Log("GAME STARTED");
+        Debug.Log("SCENE LOADED");
     }
 
     public void QuitGame()

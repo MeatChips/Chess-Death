@@ -12,7 +12,7 @@ PlayerSettings:
   targetDevice: 2
   useOnDemandResources: 0
   accelerometerFrequency: 60
-  companyName: DefaultCompany
+  companyName: MeatChips
   productName: Chess & Death
   defaultCursor: {fileID: 0}
   cursorHotspot: {x: 0, y: 0}
@@ -42,7 +42,7 @@ PlayerSettings:
   m_SplashScreenLogos:
   - logo: {fileID: 10404, guid: 0000000000000000e000000000000000, type: 0}
     duration: 2
-  - logo: {fileID: 21300000, guid: 628fa1e57c13a224f97cd64c84c41a6d, type: 3}
+  - logo: {fileID: 21300000, guid: e9591d8dbcde48844908c16a3d7432c8, type: 3}
     duration: 4
   m_VirtualRealitySplashScreen: {fileID: 0}
   m_HolographicTrackingLossScreen: {fileID: 0}
@@ -271,42 +271,42 @@ PlayerSettings:
   - m_BuildTarget: Standalone
     m_Icons:
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 5cb8441e414d80141a5efa9492dfd86c, type: 3}
+      m_Icon: {fileID: 2800000, guid: e8287b23503763340a746e90ed3034ca, type: 3}
       m_Width: 1024
       m_Height: 1024
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 628fa1e57c13a224f97cd64c84c41a6d, type: 3}
+      m_Icon: {fileID: 2800000, guid: e9591d8dbcde48844908c16a3d7432c8, type: 3}
       m_Width: 512
       m_Height: 512
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 28202c3ca38375b428afd69d821376bd, type: 3}
+      m_Icon: {fileID: 2800000, guid: 8a1bf1e1489953b439abd3574b90ce4e, type: 3}
       m_Width: 256
       m_Height: 256
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 1b15c510a69b85849a48a119253ff9e2, type: 3}
+      m_Icon: {fileID: 2800000, guid: bdb30baa7af71434497a8058acdd6edf, type: 3}
       m_Width: 128
       m_Height: 128
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 270a06a94aed4ba4eb713443b2165576, type: 3}
+      m_Icon: {fileID: 2800000, guid: a31f7a4b6a465ed4aa5c699ef5586add, type: 3}
       m_Width: 64
       m_Height: 64
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: c4e74796067aca34dba1c8fe33052038, type: 3}
+      m_Icon: {fileID: 2800000, guid: d91bca4c0b6a6b94d8858c92d7ed7779, type: 3}
       m_Width: 48
       m_Height: 48
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 16e0765cb61d522438d2e2769ec585d0, type: 3}
+      m_Icon: {fileID: 2800000, guid: 66db8e77191db0a4cae9b0d28dfd3f17, type: 3}
       m_Width: 32
       m_Height: 32
       m_Kind: 0
     - serializedVersion: 2
-      m_Icon: {fileID: 2800000, guid: 8538ef2429bb4bb48943159786c0f02d, type: 3}
+      m_Icon: {fileID: 2800000, guid: 04a495ed88208e34f9cdcb434eb53e74, type: 3}
       m_Width: 16
       m_Height: 16
       m_Kind: 0
