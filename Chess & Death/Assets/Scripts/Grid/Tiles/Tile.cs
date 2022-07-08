@@ -15,7 +15,6 @@ public abstract class Tile : MonoBehaviour
 
     [SerializeField] private bool isWalkable;
     public bool Walkable => isWalkable && OccupiedUnit == null;
-    public bool OnMouseDownBool = true;
 
     public BaseUnit OccupiedUnit;
 
@@ -53,7 +52,6 @@ public abstract class Tile : MonoBehaviour
         else if (GameManager.Instance.GameState == GameState.RedTurn)
         {
             RedMovement();
-
         }
     }
 
